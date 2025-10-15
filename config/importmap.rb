@@ -24,3 +24,5 @@ pin "bootstrap", to: "bootstrap.bundle.min.js"
 pin "@rails/actioncable", to: "@rails--actioncable.js" # @8.0.300
 
 pin "application"
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

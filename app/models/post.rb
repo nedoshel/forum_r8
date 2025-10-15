@@ -7,6 +7,8 @@ class Post < ApplicationRecord
 
   after_update_commit :broadcast_message
 
+  has_rich_text :content
+
   def broadcast_message
     PostsChannel.broadcast_to(
       Post, 
