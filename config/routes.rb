@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   root "posts#index"
 
   mount MissionControl::Jobs::Engine, at: "/jobs"
+
+  mount ActionCable.server => '/cable'
 end

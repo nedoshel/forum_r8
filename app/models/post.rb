@@ -5,9 +5,14 @@ class Post < ApplicationRecord
    # for RecalculatePostsCommentsCountJob
   delegate :stringify_keys, to: :attributes
 
-  after_update_commit :clear_cache
+  after_update_commit :broadcast_message
 
-  def clear_cache
-    Rails.cache.clear
+  def broadcast_message
+    PostsChannel.broadcast_to(
+      Post, 
+      { message: 'post updated', 
+        id: id, 
+        html: ApplicationController.render(partial: 'posts/post', locals: { post: self, html_tag: 'li' }) }
+    )
   end
 end
