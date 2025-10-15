@@ -7,7 +7,6 @@
         <div class="col">
           <%= truncate(post.content.to_plain_text, length: 300) %>
         </div>
-
         <div class="row">
           <div class="col text-start text-black-50">
             Комментарии: <%= link_to post.comments.size, post_comments_path(post) %>
@@ -17,6 +16,19 @@
           </div>
         </div>
       <% end %>
+      <div class="container">
+        <div class="d-grid justify-content-md-center">
+          <a href="#" class="text-center justify-content-center link-underline link-underline-opacity-0 link-body-emphasis" data-bs-toggle="collapse" data-bs-target="#collapse_post_<%=post.id%>" aria-expanded="false" aria-controls="collapse_post_<%=post.id%>">
+              показать полностью
+          </a>
+
+          <div class="collapse" id="collapse_post_<%=post.id%>">
+            <div class="card card-body">
+              <%= post.content.body.to_s.html_safe %>
+            </div>
+          </div>
+        </div>
+      </div> <!-- conainer -->
     </div>
   <% end %>
 <% end %>
