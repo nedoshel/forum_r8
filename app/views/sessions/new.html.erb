@@ -1,0 +1,41 @@
+<div class="container justify-content-center">
+  <%= form_with(url: session_path, method: :post, local: true) do |form| %>
+  <!-- Email input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <%= form.label :email_address, class: "form-label text-start" %> 
+    <%= form.email_field :email_address, class: "form-control" %>
+  </div>
+  <!-- Password input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <%= form.label :password, class: "form-label" %> 
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <label class="form-check-label text-start" for="form2Example31">
+          Remember me
+        </label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="form2Example31"
+          checked
+        />
+      </div>
+    </div>
+  </div>
+  <!-- Submit button -->
+  <%= form.submit "Sign in", class: "btn btn-primary btn-block mb-4" %>
+  <!-- Register buttons -->
+  <div>
+    <%= link_to "Зарегистрироваться", new_user_path %>
+  </div>
+  <% end %> 
+
+
+  <%= link_to "Забыли пароль?", new_password_path %>
+</div>

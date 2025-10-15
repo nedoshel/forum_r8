@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Comments" %>
+
+<h1>Comments</h1>
+
+<div class="container justify-content-center">
+  <ul class="list-group">
+    <%= render partial: 'comment', collection: @comments, locals: { html_tag: :li } %>
+  </ul>
+
+  <%= will_paginate @comments, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: '&laquo;', next_label: '&raquo;', list_classes: ['pagination', 'justify-content-center'] %>
+</div>
+
+<%= link_to "New comment", new_post_comment_path(@post) %>

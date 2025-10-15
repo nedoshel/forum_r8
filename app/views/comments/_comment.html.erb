@@ -1,0 +1,47 @@
+<% html_tag ||= "div" %>
+
+<%= content_tag html_tag, class: "list-group-item" do %>
+  <div class="container col">
+    <div class="col">
+      <%= link_to truncate(comment.post.content, length: 30), post_path(comment.post) %>
+    </div>
+
+    <%= link_to post_comment_url(@post, comment), class: "link-underline link-underline-opacity-0 link-body-emphasis" do %>
+      <div class="col">
+        <%= truncate(comment.content, length: 300) %>
+      </div>
+
+      <div class="row">
+        <% if comment.comment %>
+          <div class="col text-start text-black-50">
+            Ответ на: <%= link_to truncate(comment.comment.content, length: 30), post_comment_path(@post, comment.comment) %>
+          </div>
+        <% end %>
+        <div class="col text-end text-black-50">
+          <%= comment.user.name %>
+        </div>
+      </div>
+
+      <% if comment.comments.any? %>
+        <p>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#comment<%= comment.id %>" aria-expanded="false" aria-controls="comment<%= comment.id %>">
+            ответы
+          </button>
+        </p>
+        <div class="collapse" id="comment<%= comment.id %>">
+          <div class="card card-body">
+            <div class="row">
+              <% comment.comments.limit(10).each do |com| %>
+                <div class="row">
+                  <div class="col col-md-9 offset-md-3 border border-secondary">
+                    <%= truncate(com.content, length: 300) %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

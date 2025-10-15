@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Posts" %>
+
+<h1>Сообщения</h1>
+
+<div class="container">
+  <ul class="list-group">
+    <%= cache [params[:page] || 1, 'posts'], expires_in: 10.minutes do %>
+      <%= render partial: 'post', collection: @posts, locals: { html_tag: :li } %>
+    <% end %>
+  </ul>
+
+  <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: '&laquo;', next_label: '&raquo;', list_classes: ['pagination', 'justify-content-center'] %>
+</div>
+
+<%= link_to "Новое сообщение", new_post_path %>

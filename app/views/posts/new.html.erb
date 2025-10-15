@@ -1,0 +1,11 @@
+<% content_for :title, "Новый пост" %>
+
+<h1>Новый пост</h1>
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "Назад к списку всех постов", posts_path %>
+</div>

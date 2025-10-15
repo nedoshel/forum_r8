@@ -1,0 +1,20 @@
+<% html_tag ||= "div" %>
+
+<%= content_tag html_tag, class: "list-group-item" do %>
+  <div class="container col">
+    <%= link_to post_url(post), class: "link-underline link-underline-opacity-0 link-body-emphasis" do %>
+      <div class="col">
+        <%= truncate(post.content, length: 300) %>
+      </div>
+
+      <div class="row">
+        <div class="col text-start text-black-50">
+          Комментарии: <%= link_to post.comments.size, post_comments_path(post) %>
+        </div>
+        <div class="col text-end text-black-50">
+          <%= post.user.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

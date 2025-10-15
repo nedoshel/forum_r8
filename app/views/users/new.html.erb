@@ -1,0 +1,18 @@
+<div class="container">
+    <%= form_with(model: @user, local: true) do |form| %>
+    <!-- Email input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <%= form.label :email_address, class: "form-label text-start" %> 
+      <%= form.email_field :email_address, class: "form-control" %>
+    </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+      <%= form.label :password, class: "form-label" %> 
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
+
+    <%= form.submit "Create Account", class: "btn btn-primary btn-block mb-4" %>
+    <p>
+      <%= link_to "Войти", new_session_path %>
+    </p>
+    <% end %>
+</div>
