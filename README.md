@@ -23,3 +23,7 @@ Things you may want to cover:
 
 * ...
 # forum_r8
+
+chat with turbo streams
+
+![Local GIF](./images/chat.gif)
