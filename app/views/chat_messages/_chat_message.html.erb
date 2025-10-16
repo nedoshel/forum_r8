@@ -1,0 +1,25 @@
+<% user = chat_message.user %>  
+
+<li class="d-flex justify-content-between mb-4 col" id="chat_message_<%= chat_message.id %>">
+  <% unless user == Current.user %>
+    <div class="col col-md-1 d-flex align-items-center justify-content-center">
+      <h1><%= user.email_address.upcase[0] %></h1>
+    </div>
+  <% end %>
+  <div class="card col">
+    <div class="card-header d-flex justify-content-between p-3">
+      <p class="fw-bold mb-0"><%= user.email_address %></p>
+      <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%= time_ago_in_words(chat_message.created_at) %></p>
+    </div>
+    <div class="card-body">
+      <p class="mb-0">
+        <%= chat_message.content %>
+      </p>
+    </div>
+  </div>
+  <% if user == Current.user %>
+    <div class="col col-md-1 d-flex align-items-center justify-content-center">
+      <h1><%= user.email_address.upcase[0] %></h1>
+    </div>
+  <% end %>
+</li>

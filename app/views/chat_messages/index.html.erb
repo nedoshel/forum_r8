@@ -1,0 +1,41 @@
+<section class="pb-4 justify-content-center d-flex">
+  <div class="border rounded-5 col">
+    <section class="p-4 w-100 col">
+      <div class="row">
+        <div class="col">
+          <%= turbo_frame_tag "chat_#{@chat.id}", data: { src: chat_messages_path(@chat.id) } do %>
+            <ul class="list-unstyled" id="chat_<%= params[:chat_id] %>">
+              <% @chat_messages.each do |chat_message| %>
+                <%= render chat_message %>
+              <% end %>
+            </ul>
+          <% end %>
+          <div class="bg-white mb-3">
+
+            <%= form_with(model: @chat.messages.new, id: 'create_message') do |form| %>
+              <%= form.hidden_field :chat_id %>
+              <div>
+                <%= form.textarea :content, class: "form-control bg-body-tertiary", id: "textAreaExample2", rows: "4" %>
+              </div>
+              <br>
+              <div>
+                <%= form.submit 'Send', class: 'btn btn-info btn-rounded float-end' %>
+              </div>
+            <% end %>
+
+
+             
+          </div>
+        </div>
+      </div>
+        </div>
+
+      </div>
+
+    </section>   
+    
+  </div>
+</section>
+<script>
+  window.scrollTo(0, document.body.scrollHeight);
+</script>

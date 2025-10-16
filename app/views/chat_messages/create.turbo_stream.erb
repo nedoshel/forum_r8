@@ -1,0 +1,7 @@
+<%= turbo_stream.update "chat_#{@chat.id}" do %>
+  <ul class="list-unstyled" id="chat_<%= params[:chat_id] %>">
+    <% @chat_messages.each do |chat_message| %>
+      <%= render chat_message %>
+    <% end %>
+  </ul>
+<% end %>
