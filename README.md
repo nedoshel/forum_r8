@@ -27,3 +27,7 @@ Things you may want to cover:
 chat with turbo streams
 
 ![Local GIF](./images/chat.gif)
+
+posts update over ws
+
+![Local GIF](./images/posts.gif)
