@@ -74,4 +74,7 @@ Rails.application.configure do
   config.solid_queue.connects_to = { database: { writing: :queue } }
 
   Rails.application.routes.default_url_options = { host: "localhost", protocol: "http", port: 3000 }
+
+  config.hosts << /.*\.ngrok\.dev/
+  config.hosts << /.*\.ngrok-free\.dev/
 end

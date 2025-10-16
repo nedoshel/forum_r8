@@ -8,10 +8,10 @@ development: &development
   database: cache
   store_options:
     <<: *default_store_options
-    max_size: <%= 256.gigabytes %>
+    max_size: <%= 256.megabytes %>
 
 production: &production
-  databases: [production_cache1, production_cache2]
+  database: cache
   store_options:
     <<: *default_store_options
-    max_entries: <%= 256.gigabytes %>
+    max_entries: <%= 256.megabytes %>

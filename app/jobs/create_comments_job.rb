@@ -15,6 +15,8 @@ class CreateCommentsJob < ApplicationJob
     comment_ids = Comment.select(:id).map(&:id)
 
     create_bulk_comments(users, posts, comment_ids, text)
+
+    Rails.cache.clear
   end
 
   private 
